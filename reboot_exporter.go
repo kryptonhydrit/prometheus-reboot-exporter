@@ -68,13 +68,12 @@ func main() {
 
 	flag.Parse()
 
-	log.Println("Starting reboot_exporter", version.Info())
-	log.Printf("Server running at http://0.0.0.0:%s%s", *listenAddr, *metricsPath)
-
 	prometheus.MustRegister(rebootRequiredGauge)
 
 	checkRebootRequired()
 
+	log.Println("Starting reboot_exporter", version.Info())
+	log.Printf("Server running at http://0.0.0.0:%s%s", *listenAddr, *metricsPath)
 	http.Handle(*metricsPath, promhttp.Handler())
 	log.Fatalln(http.ListenAndServe(":"+*listenAddr, nil))
 }
