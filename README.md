@@ -4,9 +4,9 @@
   - [About](#about)
   - [Getting started](#getting-started)
     - [Build](#build)
-    - [Running exporter](#running-exporter)
   - [Flags](#flags)
   - [Metrics](#metrics)
+  - [Sources](#sources)
 
 ## About
 This exporter provides metrics from Debian-based systems by monitoring a specific file to determine if a reboot is required.
@@ -15,26 +15,30 @@ I created the project to gain some experience with go and to build a dashboard t
 
 ## Getting started
 
+> [!CAUTION]
+> The exporter works only on Debian-based systems
+
 ### Build
+To build a binary, clone the repository and run:
 ```bash
 make
 ```
 
-### Running exporter
+Run the binary:
 ```bash
-bin/./reboot_exporter
+./bin/./reboot_exporter
 ```
 
 ## Flags
-```bash
-Usage of bin/./reboot_exporter:
-  -web.telemetry-path string
-        Path to expose metrics (default "/metrics")
-  -web.telemetry-port string
-        Port to listen for telemetry. (default "9001")
-```
+| Flag | Type | Description |
+| --- | --- | --- |
+| --web.telemetry-path | string | Path under which to expose metrics. (default "/metrics") |
+| --web.telemetry-port | string | Port on which to expose metrics (default :11011) |
 
 ## Metrics
 | Metric | Description |
 | --- | --- |
 | reboot_required | 1 = reboot required, 0 = reboot not required |
+
+## Sources
+Github: https://github.com/kryptonhydrit/prometheus-reboot-exporter
