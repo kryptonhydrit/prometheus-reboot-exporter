@@ -14,9 +14,9 @@ import (
 )
 
 var (
-	listenAddr   string
-	metricsPath  string
-	sentinalPath string
+	listenAddr    string
+	metricsPath   string
+	monitoredPath string
 )
 
 var rebootRequiredGauge = prometheus.NewGauge(
@@ -35,7 +35,7 @@ func main() {
 
 			go func() {
 				for {
-					if _, err := os.Stat(sentinalPath); err == nil {
+					if _, err := os.Stat(monitoredPath); err == nil {
 						rebootRequiredGauge.Set(1)
 					} else {
 						rebootRequiredGauge.Set(0)
@@ -58,7 +58,7 @@ func main() {
 
 	rootCmd.PersistentFlags().StringVar(&listenAddr, "web.metrics.port", "11011", "Port on which to expose metrics")
 	rootCmd.PersistentFlags().StringVar(&metricsPath, "web.metrics.path", "/metrics", "Path under which to expose metrics")
-	rootCmd.PersistentFlags().StringVar(&sentinalPath, "sentinal.path", "/var/run/reboot-required", "Path to file to be monitored")
+	rootCmd.PersistentFlags().StringVar(&monitoredPath, "monitored.path", "/var/run/reboot-required", "Path to file to be monitored")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

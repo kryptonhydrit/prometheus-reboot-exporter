@@ -32,8 +32,9 @@ Run the binary:
 ## Flags
 | Flag | Type | Description |
 | --- | --- | --- |
-| --web.telemetry-path | string | Path under which to expose metrics. (default "/metrics") |
-| --web.telemetry-port | string | Port on which to expose metrics (default 11011) |
+| --web.telemetry.path | string | Path under which to expose metrics. (default "/metrics") |
+| --web.telemetry.port | string | Port on which to expose metrics (default "11011") |
+| --monitored.path | string | Path to file to be monitored (default "/var/run/reboot-required") |
 
 ## Metrics
 | Metric | Description |
