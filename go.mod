@@ -3,6 +3,7 @@ module reboot_exporter
 go 1.23.5
 
 require (
+	github.com/fsnotify/fsnotify v1.8.0
 	github.com/prometheus/client_golang v1.20.5
 	github.com/prometheus/common v0.62.0
 	github.com/spf13/cobra v1.8.1

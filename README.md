@@ -15,9 +15,6 @@ I created the project to gain some experience with go and to build a dashboard t
 
 ## Getting started
 
-> [!CAUTION]
-> The exporter works only on Debian-based systems
-
 ### Build
 To build a binary, clone the repository and run:
 ```bash
