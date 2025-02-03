@@ -1,4 +1,4 @@
-module reboot_exporter
+module github.com/kryptonhydrit/prometheus-reboot-exporter
 
 go 1.23.5
 
